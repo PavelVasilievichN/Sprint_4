@@ -193,4 +193,21 @@ public class ScooterOrderForm {
                 .until(ExpectedConditions.visibilityOfElementLocated(popUpWindow));
         return driver.findElement(popUpWindow).getText();
     }
+
+    //метод для заполнения формы заказа самоката
+    public void fillingOutTheScooterOrderForm(String firstName, String lastName, String addressCustomers,
+                                              String stationName, String telephoneNumber, String deliveryDate,
+                                              String rentalPeriod, String checkboxColor, String comment){
+        fillingFieldName(firstName);
+        fillingFieldLastName(lastName);
+        fillingInTheCustomerAddressField(addressCustomers);
+        fillingInTheMetroStationField(stationName);
+        fillingFieldTelephoneNumber(telephoneNumber);
+        clickOnTheNextButton();
+        FillingInTheScooterOrderDateField(deliveryDate);
+        FillingInTheScooterRentalPeriodField(rentalPeriod);
+        choosingScooterColor(checkboxColor);
+        FillingOutTheCommentFieldForTheCourier(comment);
+        clickOnTheOrderButton();
+    }
 }
