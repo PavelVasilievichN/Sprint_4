@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static ru.yandex.praktikum.util.EvnConfig.EXPLICITY_TIMEOUT;
+
 public class HomePageCookiesButton {
     private final WebDriver driver;
     //локатор для кнопки принятия кук
@@ -16,7 +18,7 @@ public class HomePageCookiesButton {
 
     //Метод принять куки нажатием на кнопку
     public void acceptCookiesButton(){
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                 .until(ExpectedConditions.elementToBeClickable(acceptingCookies));
         driver.findElement(acceptingCookies).click();
     }

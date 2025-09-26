@@ -18,7 +18,7 @@ public class DropDownListTest {
 
     @Before
     public void setUp() {
-        driver = getBrowser("chrome");
+        driver = getBrowser("firefox");
     }
 
     private final String textOne;

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static ru.yandex.praktikum.util.EvnConfig.EXPLICITY_TIMEOUT;
+
 public class ScooterOrderForm {
     private final WebDriver driver;
 
@@ -79,13 +81,13 @@ public class ScooterOrderForm {
     public void clickOrderButtonInHeaderOrFooter(String choiceButtonOrder){
         switch(choiceButtonOrder){
             case "header":
-                new WebDriverWait(driver, 5)
+                new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                         .until(ExpectedConditions.elementToBeClickable(orderButtonInHeader));
                 driver.findElement(orderButtonInHeader).click();
                 break;
 
             case "footer":
-                new WebDriverWait(driver, 5)
+                new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                         .until(ExpectedConditions.elementToBeClickable(orderButtonInFooter));
                 driver.findElement(orderButtonInFooter).click();
                 break;
@@ -110,7 +112,7 @@ public class ScooterOrderForm {
     public void fillingInTheMetroStationField(String stationName){
         driver.findElement(choosingMetroStation).click();
         driver.findElement(choosingMetroStation).sendKeys(stationName);
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                 .until(ExpectedConditions.visibilityOfElementLocated(fieldMetroStation));
         driver.findElement(fieldMetroStation).click();
 
@@ -122,7 +124,7 @@ public class ScooterOrderForm {
     }
     //метод нажатия на кнопку Далее(переход на следующею форму)
     public void clickOnTheNextButton(){
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                 .until(ExpectedConditions.elementToBeClickable(nextButton));
         driver.findElement(nextButton).click();
     }
@@ -176,20 +178,20 @@ public class ScooterOrderForm {
     }
     //метод для нажатия кнопки "Заказать" самокат
     public void clickOnTheOrderButton(){
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                 .until(ExpectedConditions.elementToBeClickable(orderButton));
         driver.findElement(orderButton).click();
     }
 
     //метод для кнопки Да(оформления заказа)
     public void selectButtonYes(){
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                 .until(ExpectedConditions.elementToBeClickable(buttonYes));
         driver.findElement(buttonYes).click();
     }
 
     public String getTextOrderConfirmation(){
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                 .until(ExpectedConditions.visibilityOfElementLocated(popUpWindow));
         return driver.findElement(popUpWindow).getText();
     }

@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static ru.yandex.praktikum.util.EvnConfig.*;
+
 public class HomePagYandexScooter {
     private final WebDriver driver;
     /*=========================Элементы Выпадающего списка===================*/
@@ -55,15 +57,15 @@ public class HomePagYandexScooter {
 
     //метод для перехода на сайт учебного сервиса Яндекс Самокат
     public void openHomePage(WebDriver driver){
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(BASE_URL);
     }
 
     //Метод проскролить страницу
     public void scrollToTheElement(By elementLocator){
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, EXPLICITY_TIMEOUT)
                 .until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
         WebElement element = driver.findElement(elementLocator);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        ((JavascriptExecutor)driver).executeScript(SCROLL_ELEMENT, element);
     }
 
     //Метод проверки текста раскрывшемся элемента один выпадающего списка

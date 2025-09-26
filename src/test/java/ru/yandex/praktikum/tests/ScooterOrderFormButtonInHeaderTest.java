@@ -17,7 +17,7 @@ public class ScooterOrderFormButtonInHeaderTest {
 
     @Before
     public void setUp() {
-        driver = getBrowser("chrome");
+        driver = getBrowser("firefox");
     }
 
     @Test
