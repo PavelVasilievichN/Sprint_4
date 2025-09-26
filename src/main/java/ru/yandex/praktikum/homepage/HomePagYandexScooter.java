@@ -106,5 +106,22 @@ public class HomePagYandexScooter {
         driver.findElement(dropDownListButtonEight).click();
         return textEight.equals(driver.findElement(openingTextButtonEight).getText());
     }
-
+    public boolean checkDropDownList(String textOne, String textTwo, String textThree, String textFour,
+                                     String textFive, String textSix, String textSeven, String textEight) {
+        boolean isOne = clickingDropDownListButtonOpensCorrespondingTextOne(textOne);
+        boolean isTwo = clickingDropDownListButtonOpensCorrespondingTextTwo(textTwo);
+        boolean isThree = clickingDropDownListButtonOpensCorrespondingTextThree(textThree);
+        boolean isFour = clickingDropDownListButtonOpensCorrespondingTextFour(textFour);
+        boolean isFive = clickingDropDownListButtonOpensCorrespondingTextFive(textFive);
+        boolean isSix = clickingDropDownListButtonOpensCorrespondingTextSix(textSix);
+        boolean isSeven = clickingDropDownListButtonOpensCorrespondingTextSeven(textSeven);
+        boolean isEight = clickingDropDownListButtonOpensCorrespondingTextEight(textEight);
+        boolean[] listElements = {isOne, isTwo, isThree, isFour, isFive, isSix, isSeven, isEight};
+        for (boolean element : listElements) {
+            if (element) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
