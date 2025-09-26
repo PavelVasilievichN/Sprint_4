@@ -90,6 +90,107 @@ public class ScooterOrderForm {
                 driver.findElement(orderButtonInFooter).click();
                 break;
         }
+    }
+    //метод заполнения поля Имя
+    public void fillingFieldName(String firstName){
+        driver.findElement(fieldName).clear();
+        driver.findElement(fieldName).sendKeys(firstName);
+    }
+    //метод заполнения поля Фамилия
+    public void fillingFieldLastName(String lastName){
+        driver.findElement(fieldLastName).clear();
+        driver.findElement(fieldLastName).sendKeys(lastName);
+    }
+    //метод заполнения поля Адрес заказчика
+    public void fillingInTheCustomerAddressField(String addressCustomers){
+        driver.findElement(fieldAddressCustomers).clear();
+        driver.findElement(fieldAddressCustomers).sendKeys(addressCustomers);
+    }
+    //метод заполнения поля Станция метр
+    public void fillingInTheMetroStationField(String stationName){
+        driver.findElement(choosingMetroStation).click();
+        driver.findElement(choosingMetroStation).sendKeys(stationName);
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(fieldMetroStation));
+        driver.findElement(fieldMetroStation).click();
 
+    }
+    //метод заполнения поля номер телефона заказчика
+    public void fillingFieldTelephoneNumber(String telephoneNumber){
+        driver.findElement(fieldTelephoneNumber).clear();
+        driver.findElement(fieldTelephoneNumber).sendKeys(telephoneNumber);
+    }
+    //метод нажатия на кнопку Далее(переход на следующею форму)
+    public void clickOnTheNextButton(){
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(nextButton));
+        driver.findElement(nextButton).click();
+    }
+    //метод для заполнения поля когда привезти самокат(дата)
+    public void FillingInTheScooterOrderDateField(String deliveryDate){
+        driver.findElement(deliveryDateField).clear();
+        driver.findElement(deliveryDateField).sendKeys(deliveryDate);
+    }
+    //метод для заполнения поля срок аренды самоката
+    public void FillingInTheScooterRentalPeriodField(String rentalPeriod){
+        driver.findElement(fieldRentalPeriod).click();
+        //выбор элемента раскрывающегося списка под номером один
+        switch (rentalPeriod) {
+            case "сутки":
+                driver.findElement(elementUnderIndexOne).click();
+                break;
+            case "двое суток":
+                driver.findElement(elementUnderIndexTwo).click();
+                break;
+            case "трое суток":
+                driver.findElement(elementUnderIndexThree).click();
+                break;
+            case "четверо суток":
+                driver.findElement(elementUnderIndexFour).click();
+                break;
+            case "пятеро суток":
+                driver.findElement(elementUnderIndexFive).click();
+                break;
+            case "шестеро суток":
+                driver.findElement(elementUnderIndexSix).click();
+                break;
+            case "семеро суток":
+                driver.findElement(elementUnderIndexSeven).click();
+                break;
+        }
+
+    }
+    //метод для включения чекбокса в поле цвет самоката
+    public void choosingScooterColor(String checkboxColor){
+        if(checkboxColor.equals("Чёрный жемчуг")){
+            driver.findElement(blackPearlCheckbox).click();
+        }
+        else{
+            driver.findElement(grayHopelessnessCheckbox).click();
+        }
+    }
+    //метод для заполнения поля комментарий для курьера
+    public void FillingOutTheCommentFieldForTheCourier(String comment){
+        driver.findElement(fieldCommentForTheCourier).clear();
+        driver.findElement(fieldCommentForTheCourier).sendKeys(comment);
+    }
+    //метод для нажатия кнопки "Заказать" самокат
+    public void clickOnTheOrderButton(){
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(orderButton));
+        driver.findElement(orderButton).click();
+    }
+
+    //метод для кнопки Да(оформления заказа)
+    public void selectButtonYes(){
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.elementToBeClickable(buttonYes));
+        driver.findElement(buttonYes).click();
+    }
+
+    public String getTextOrderConfirmation(){
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(popUpWindow));
+        return driver.findElement(popUpWindow).getText();
     }
 }
