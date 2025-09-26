@@ -56,4 +56,46 @@ public class HomePagYandexScooter {
         WebElement element = driver.findElement(elementLocator);
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
     }
+
+    //Метод проверки текста раскрывшемся элемента один выпадающего списка
+    public boolean clickingDropDownListButtonOpensCorrespondingTextOne(String textOne){
+        driver.findElement(dropDownListButtonOne).click();
+        return textOne.equals(driver.findElement(openingTextButtonOne).getText());
+    }
+    //Метод проверки текста раскрывшемся элемента два выпадающего списка
+    public boolean clickingDropDownListButtonOpensCorrespondingTextTwo(String textTwo){
+        driver.findElement(dropDownListButtonTwo).click();
+        return textTwo.equals(driver.findElement(openingTextButtonTwo).getText());
+    }
+    //Метод проверки текста раскрывшемся элемента три выпадающего списка
+    public boolean clickingDropDownListButtonOpensCorrespondingTextThree(String textThree){
+        driver.findElement(dropDownListButtonThree).click();
+        return textThree.equals(driver.findElement(openingTextButtonThree).getText());
+    }
+    //Метод проверки текста раскрывшемся элемента четыре выпадающего списка
+    public boolean clickingDropDownListButtonOpensCorrespondingTextFour(String textFour){
+        driver.findElement(dropDownListButtonFour).click();
+        return textFour.equals(driver.findElement(openingTextButtonFour).getText());
+    }
+    //Метод проверки текста раскрывшемся элемента пять выпадающего списка
+    public boolean clickingDropDownListButtonOpensCorrespondingTextFive(String textFive){
+        driver.findElement(dropDownListButtonFive).click();
+        return textFive.equals(driver.findElement(openingTextButtonFive).getText());
+    }
+    //Метод проверки текста раскрывшемся элемента шесть выпадающего списка
+    public boolean clickingDropDownListButtonOpensCorrespondingTextSix(String textSix){
+        driver.findElement(dropDownListButtonSix).click();
+        return textSix.equals(driver.findElement(openingTextButtonSix).getText());
+    }
+    //Метод проверки текста раскрывшемся элемента семь выпадающего списка
+    public boolean clickingDropDownListButtonOpensCorrespondingTextSeven(String textSeven){
+        driver.findElement(dropDownListButtonSeven).click();
+        return textSeven.equals(driver.findElement(openingTextButtonSeven).getText());
+    }
+    //Метод проверки текста раскрывшемся элемента восемь выпадающего списка
+    public boolean clickingDropDownListButtonOpensCorrespondingTextEight(String textEight){
+        driver.findElement(dropDownListButtonEight).click();
+        return textEight.equals(driver.findElement(openingTextButtonEight).getText());
+    }
+
 }
