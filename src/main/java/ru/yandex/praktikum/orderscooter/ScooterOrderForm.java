@@ -2,6 +2,8 @@ package ru.yandex.praktikum.orderscooter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ScooterOrderForm {
     private final WebDriver driver;
@@ -72,4 +74,22 @@ public class ScooterOrderForm {
     }
 
     public By getOrderButtonInFooter() { return orderButtonInFooter; }
+
+    //метод для переключения между кнопками "Заказать" на главной странице
+    public void clickOrderButtonInHeaderOrFooter(String choiceButtonOrder){
+        switch(choiceButtonOrder){
+            case "header":
+                new WebDriverWait(driver, 5)
+                        .until(ExpectedConditions.elementToBeClickable(orderButtonInHeader));
+                driver.findElement(orderButtonInHeader).click();
+                break;
+
+            case "footer":
+                new WebDriverWait(driver, 5)
+                        .until(ExpectedConditions.elementToBeClickable(orderButtonInFooter));
+                driver.findElement(orderButtonInFooter).click();
+                break;
+        }
+
+    }
 }
