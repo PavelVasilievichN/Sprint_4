@@ -1,7 +1,11 @@
 package ru.yandex.praktikum.homepage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePagYandexScooter {
     private final WebDriver driver;
@@ -43,5 +47,13 @@ public class HomePagYandexScooter {
 
     public HomePagYandexScooter(WebDriver driver){
         this.driver= driver;
+    }
+
+    //Метод проскролить страницу
+    public void scrollToTheElement(By elementLocator){
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+        WebElement element = driver.findElement(elementLocator);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 }
