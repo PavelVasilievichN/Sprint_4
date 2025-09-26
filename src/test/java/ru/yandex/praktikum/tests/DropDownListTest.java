@@ -1,6 +1,7 @@
 package ru.yandex.praktikum.tests;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -9,11 +10,16 @@ import ru.yandex.praktikum.homepage.HomePagYandexScooter;
 import ru.yandex.praktikum.homepage.HomePageCookiesButton;
 
 import static org.junit.Assert.assertEquals;
+import static ru.yandex.praktikum.tests.tools.ToolBrowsers.getBrowser;
 
 @RunWith(Parameterized.class)
 public class DropDownListTest {
     private WebDriver driver;
 
+    @Before
+    public void setUp() {
+        driver = getBrowser("chrome");
+    }
 
     private final String textOne;
     private final String textTwo;
