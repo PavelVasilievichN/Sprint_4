@@ -49,6 +49,10 @@ public class HomePagYandexScooter {
         this.driver= driver;
     }
 
+    public By getDropDownListButtonOne(){
+        return dropDownListButtonOne;
+    }
+
     //метод для перехода на сайт учебного сервиса Яндекс Самокат
     public void openHomePage(WebDriver driver){
         driver.get("https://qa-scooter.praktikum-services.ru/");
