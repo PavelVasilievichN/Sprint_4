@@ -50,7 +50,6 @@ public class HomePageYandexScooter {
     public By getDropDownListItemHowMuchCostAndHowPay(){
         return dropDownListItemHowMuchCostAndHowPay;
     }
-
     public HomePageYandexScooter(WebDriver driver){
         this.driver= driver;
     }
@@ -62,74 +61,27 @@ public class HomePageYandexScooter {
 
     //Метод скролить страницу
     public void scrollToTheElement(By elementLocator){
-
         config.waitVisibilityOfElementLocated(driver, elementLocator);
         WebElement element = driver.findElement(elementLocator);
         ((JavascriptExecutor)driver).executeScript(SCROLL_ELEMENT, element);
     }
 
-    //Метод проверки текста раскрывшемся элемента один выпадающего списка
-    public boolean checkDropDownListItemHowMuchCostAndHowPay(String textQuestion, String textAnswer){
-        boolean isQuestion = textQuestion.equals(driver.findElement(dropDownListItemHowMuchCostAndHowPay).getText());
-        driver.findElement(dropDownListItemHowMuchCostAndHowPay).click();
-        config.waitVisibilityOfElementLocated(driver, dropDownListItemTextHowMuchCostAndHowPay);
-        boolean isAnswer = textAnswer.equals(driver.findElement(dropDownListItemTextHowMuchCostAndHowPay).getText());
-        return isQuestion == isAnswer;
-    }
-    //Метод проверки текста раскрывшемся элемента два выпадающего списка
-    public boolean checkDropDownListItemWantSeveralScootersAtOnce(String textQuestion, String textAnswer){
-        boolean isQuestion = textQuestion.equals(driver.findElement(dropDownListItemWantSeveralScootersAtOnce).getText());
-        driver.findElement(dropDownListItemWantSeveralScootersAtOnce).click();
-        config.waitVisibilityOfElementLocated(driver, dropDownListItemTextWantSeveralScootersAtOnce);
-        boolean isAnswer = textAnswer.equals(driver.findElement(dropDownListItemTextWantSeveralScootersAtOnce).getText());
-        return isQuestion == isAnswer;
-    }
-    //Метод проверки текста раскрывшемся элемента три выпадающего списка
-    public boolean checkDropDownListItemHowCalculationTimeRental(String textQuestion, String textAnswer){
-        boolean isQuestion = textQuestion.equals(driver.findElement(dropDownListItemHowCalculationTimeRental).getText());
-        driver.findElement(dropDownListItemHowCalculationTimeRental).click();
-        config.waitVisibilityOfElementLocated(driver, dropDownListItemTextHowCalculationTimeRental);
-        boolean isAnswer = textAnswer.equals(driver.findElement(dropDownListItemTextHowCalculationTimeRental).getText());
-        return isQuestion == isAnswer;
-    }
-    //Метод проверки текста раскрывшемся элемента четыре выпадающего списка
-    public boolean checkDropDownListItemPossibleOrderScooterToday(String textQuestion, String textAnswer){
-        boolean isQuestion = textQuestion.equals(driver.findElement(dropDownListItemPossibleOrderScooterToday).getText());
-        driver.findElement(dropDownListItemPossibleOrderScooterToday).click();
-        config.waitVisibilityOfElementLocated(driver, dropDownListItemTextPossibleOrderScooterToday);
-        boolean isAnswer = textAnswer.equals(driver.findElement(dropDownListItemTextPossibleOrderScooterToday).getText());
-        return isQuestion == isAnswer;
-    }
-    //Метод проверки текста раскрывшемся элемента пять выпадающего списка
-    public boolean checkDropDownListItemPossibleExtendOrderOrReturnScooterEarlier(String textQuestion, String textAnswer){
-        boolean isQuestion = textQuestion.equals(driver.findElement(dropDownListItemPossibleExtendOrderOrReturnScooterEarlier).getText());
-        driver.findElement(dropDownListItemPossibleExtendOrderOrReturnScooterEarlier).click();
-        config.waitVisibilityOfElementLocated(driver, dropDownListItemTextPossibleExtendOrderOrReturnScooterEarlier);
-        boolean isAnswer = textAnswer.equals(driver.findElement(dropDownListItemTextPossibleExtendOrderOrReturnScooterEarlier).getText());
-        return isQuestion == isAnswer;
-    }
-    //Метод проверки текста раскрывшемся элемента шесть выпадающего списка
-    public boolean checkDropDownListItemChargerWithScooter(String textQuestion, String textAnswer){
-        boolean isQuestion = textQuestion.equals(driver.findElement(dropDownListItemChargerWithScooter).getText());
-        driver.findElement(dropDownListItemChargerWithScooter).click();
-        config.waitVisibilityOfElementLocated(driver, dropDownListItemTextChargerWithScooter);
-        boolean isAnswer = textAnswer.equals(driver.findElement(dropDownListItemTextChargerWithScooter).getText());
-        return isQuestion == isAnswer;
-    }
-    //Метод проверки текста раскрывшемся элемента семь выпадающего списка
-    public boolean checkDropDownListItemPossibleCancelAnOrder(String textQuestion, String textAnswer){
-        boolean isQuestion = textQuestion.equals(driver.findElement(dropDownListItemPossibleCancelAnOrder).getText());
-        driver.findElement(dropDownListItemPossibleCancelAnOrder).click();
-        config.waitVisibilityOfElementLocated(driver, dropDownListItemTextPossibleCancelAnOrder);
-        boolean isAnswer = textAnswer.equals(driver.findElement(dropDownListItemTextPossibleCancelAnOrder).getText());
-        return isQuestion == isAnswer;
-    }
-    //Метод проверки текста раскрывшемся элемента восемь выпадающего списка
-    public boolean checkDropDownListItemLiveOutsideMoscowRingRoadCanYouBring(String textQuestion, String textAnswer){
-        boolean isQuestion = textQuestion.equals(driver.findElement(dropDownListItemLiveOutsideMoscowRingRoadCanYouBring).getText());
-        driver.findElement(dropDownListItemLiveOutsideMoscowRingRoadCanYouBring).click();
-        config.waitVisibilityOfElementLocated(driver, dropDownListItemTextLiveOutsideMoscowRingRoadCanYouBring);
-        boolean isAnswer = textAnswer.equals(driver.findElement(dropDownListItemTextLiveOutsideMoscowRingRoadCanYouBring).getText());
-        return isQuestion == isAnswer;
+    //массив для вопросов
+    private final By[] question = new By[]{dropDownListItemHowMuchCostAndHowPay, dropDownListItemWantSeveralScootersAtOnce, dropDownListItemHowCalculationTimeRental,
+            dropDownListItemPossibleOrderScooterToday, dropDownListItemPossibleExtendOrderOrReturnScooterEarlier, dropDownListItemChargerWithScooter,
+            dropDownListItemPossibleCancelAnOrder, dropDownListItemLiveOutsideMoscowRingRoadCanYouBring};
+    //массив для ответов
+    private final By[] answer = new By[]{dropDownListItemTextHowMuchCostAndHowPay, dropDownListItemTextWantSeveralScootersAtOnce, dropDownListItemTextHowCalculationTimeRental,
+            dropDownListItemTextPossibleOrderScooterToday, dropDownListItemTextPossibleExtendOrderOrReturnScooterEarlier, dropDownListItemTextChargerWithScooter,
+            dropDownListItemTextPossibleCancelAnOrder, dropDownListItemTextLiveOutsideMoscowRingRoadCanYouBring};
+
+    //метод для проверки выпадающего списка
+    public boolean checkDropDownListItemQuestionAndAnswer(int index, String textQuestion, String textAnswer)
+    {
+        boolean isQuestion = textQuestion.equals(driver.findElement(question[index]).getText());
+        driver.findElement(question[index]).click();
+        config.waitVisibilityOfElementLocated(driver, answer[index]);
+        boolean isAnswer = textAnswer.equals(driver.findElement(answer[index]).getText());
+        return isQuestion && isAnswer;
     }
 }
