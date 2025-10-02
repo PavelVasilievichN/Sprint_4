@@ -28,7 +28,7 @@ public class ScooterOrderForm {
     //кнопка Далее(переход на следующею форму)
     private final By nextButton = By.xpath(".//button[text()='Далее']");
     //поле когда привезти самокат
-    private final By deliveryDateField = By.xpath(".//div[@class='react-datepicker-wrapper']//input");
+    private final By deliveryDateField = By.xpath(".//input[@type='text' and contains(@placeholder, 'Когда привезти')]");
     //поле срок аренды самоката
     private final By rentalPeriodField = By.xpath(".//div[@class='Dropdown-root']//span");
     //раскрывающийся список с элементом под индексом 1
@@ -56,18 +56,21 @@ public class ScooterOrderForm {
         this.driver = driver;
     }
 
-    public By getOrderButtonInFooter() { return orderButtonInFooter; }
+    //метод для выбора кнопки "Заказать"
+    public void clickOrderButtonInHeaderOrFooter(String buttonOrder){
+        switch (buttonOrder){
+            case "header":
+                config.waitElementToBeClickable(driver, orderButtonInHeader);
+                driver.findElement(orderButtonInHeader).click();
+                break;
+            case "footer":
+                config.waitElementToBeClickable(driver, orderButtonInFooter);
+                driver.findElement(orderButtonInFooter).click();
+                break;
+            default:
+                System.out.println("Error selecting buttonOrder");
+        }
 
-    //метод для кнопки "Заказать" в Header
-    public void clickOrderButtonInHeader(){
-        config.waitElementToBeClickable(driver, orderButtonInHeader);
-        driver.findElement(orderButtonInHeader).click();
-    }
-
-    //метод для кнопки "Заказать" в Footer
-    public void clickOrderButtonInFooter(){
-        config.waitElementToBeClickable(driver, orderButtonInFooter);
-        driver.findElement(orderButtonInFooter).click();
     }
 
     //метод заполнения поля Имя
@@ -117,12 +120,8 @@ public class ScooterOrderForm {
             case "двое суток":
                 driver.findElement(elementFortyEightHours).click();
                 break;
-            case "трое суток":
-                driver.findElement(elementSeventyTwoHours).click();
-                break;
-            case "четверо суток":
-                driver.findElement(elementNinetySixHours).click();
-                break;
+            default:
+                System.out.println("Incorrect filling of the rental period field");
         }
     }
     //метод для включения чекбокса в поле цвет самоката
