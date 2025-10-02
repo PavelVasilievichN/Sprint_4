@@ -8,7 +8,7 @@ public class ToolBrowsers {
 
     public static WebDriver getBrowser(String browserName) {
         WebDriver driver = null;
-        switch (browserName) {
+        switch (browserName){
             case "firefox":
                 driver = new FirefoxDriver();
                 driver.manage().window().maximize();
@@ -17,6 +17,8 @@ public class ToolBrowsers {
                 driver = new ChromeDriver();
                 driver.manage().window().maximize();
                 break;
+            default:
+                System.out.println("Invalid browser name!");
         }
         return driver;
     }
